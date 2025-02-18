@@ -29,4 +29,4 @@ jobs:
       - name: Deploy Cloud Functions
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: firebase deploy --only functions --project tu-proyecto-firebase
+        run: firebase deploy --only functions --project atom-app-b1b51
