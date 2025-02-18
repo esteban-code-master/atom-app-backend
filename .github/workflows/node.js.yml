@@ -3,10 +3,7 @@ name: Deploy Firebase Functions
 on:
   push:
     branches:
-      - master
-  pull_request:
-    branches:
-      - master
+      - main  # Se ejecuta cuando hay un push en main
 
 jobs:
   deploy-functions:
@@ -20,6 +17,9 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Create Service Account Key File
+        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > $GITHUB_WORKSPACE/firebase-service-account.json
+
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
@@ -28,5 +28,5 @@ jobs:
 
       - name: Deploy Cloud Functions
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: $GITHUB_WORKSPACE/firebase-service-account.json
         run: firebase deploy --only functions --project atom-app-b1b51
