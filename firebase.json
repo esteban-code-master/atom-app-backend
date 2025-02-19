@@ -15,5 +15,15 @@
         "npm --prefix \"$RESOURCE_DIR\" run build"
       ]
     }
-  ]
+  ],
+ "hosting": {
+    "target": "default",
+    "public": "public",
+    "rewrites": [
+      {
+        "source": "/**",
+        "function": "helloWorld"
+      }
+    ]
+  }
 }
