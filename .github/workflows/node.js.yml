@@ -30,10 +30,10 @@
 #           cd functions
 #           npm install
 
-#       - name: Deploy to Firebase
-#         run: |
-#           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase_service_account.json"
-#           firebase deploy --only functions --project atom-app-b1b51
+        # - name: Deploy to Firebase
+        #   run: |
+        #     export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase_service_account.json"
+        #     firebase deploy --only functions --project atom-app-b1b51
 
 name: Deploy Atom task api
 
@@ -72,9 +72,9 @@ jobs:
           npm install
 
       - name: 🚀 Deploy to Firebase
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: $HOME/firebase_service_account.json
-        run: firebase deploy --only functions --project atom-app-b1b51
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase_service_account.json"
+          firebase deploy --only functions --project atom-app-b1b51
 
       - name: 🧹 Clean Up Credentials
         if: always()
