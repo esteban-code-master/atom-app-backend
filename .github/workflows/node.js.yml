@@ -28,4 +28,4 @@ jobs:
       - name: Deploy to Firebase
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase_service_account.json"
-          firebase deploy --only functions
+          firebase deploy --only functions --project atom-app-b1b51
